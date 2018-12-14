@@ -9,6 +9,7 @@ namespace Fab\RssDisplay\Backend;
  */
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
 
 /**
  * Class that adds the wizard icon.
@@ -26,7 +27,7 @@ class Wizard
     public function proc($wizardItems)
     {
         $wizardItems['plugins_tx_rssdisplay_pi1'] = array(
-            'icon' => ExtensionManagementUtility::extRelPath('rss_display') . 'ext_icon.png', #'Resources/Public/Images/RssDisplay.png',
+            'icon' => PathUtility::getAbsoluteWebPath("typo3conf/ext/rss_display/ext_icon.png"), #'Resources/Public/Images/RssDisplay.png',
             'title' => $this->getLanguageService()->sL('LLL:EXT:rss_display/Resources/Private/Language/locallang.xlf:wizard.title'),
             'description' => $this->getLanguageService()->sL('LLL:EXT:rss_display/Resources/Private/Language/locallang.xlf:wizard.description'),
             'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=rssdisplay_pi1'
