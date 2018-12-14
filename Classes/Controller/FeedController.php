@@ -141,7 +141,7 @@ class FeedController extends ActionController
     protected function getPluginType()
     {
         //TODO Hotfix, configuration Utility was Removed from Core in typo3 9.0
-        return true;
+        return false;
         $configurationUtility = $this->objectManager->get(ConfigurationUtility::class);
         $configuration = $configurationUtility->getCurrentConfiguration('rss_display');
         $pluginType = $configuration['plugin_type']['value'];
