@@ -8,9 +8,9 @@ namespace Fab\RssDisplay\Controller;
  * LICENSE.md file that was distributed with this source code.
  */
 
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-//use TYPO3\CMS\Extensionmanager\Utility\ConfigurationUtility; ### Was Removed in typo3 9.0.0
 
 /**
  * RSS display that will fetch the content of a RSS Feed and display it onto the Frontend.
@@ -140,12 +140,11 @@ class FeedController extends ActionController
      */
     protected function getPluginType()
     {
-        //TODO Hotfix, configuration Utility was Removed from Core in typo3 9.0
-        return false;
-        $configurationUtility = $this->objectManager->get(ConfigurationUtility::class);
-        $configuration = $configurationUtility->getCurrentConfiguration('rss_display');
-        $pluginType = $configuration['plugin_type']['value'];
-
+        //configuration Utility was Removed from Core in typo3 9.0
+        /** @var ExtensionConfiguration $backendConfiguration */
+        $backendConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class)
+            ->get('rss_display');
+        $pluginType = $backendConfiguration['plugin_type']['value'];
         return $pluginType;
     }
 
