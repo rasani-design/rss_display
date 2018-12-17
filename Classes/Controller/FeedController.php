@@ -144,7 +144,7 @@ class FeedController extends ActionController
         /** @var ExtensionConfiguration $backendConfiguration */
         $backendConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class)
             ->get('rss_display');
-        $pluginType = $backendConfiguration['plugin_type']['value'];
+        $pluginType = $backendConfiguration['plugin_type'];
         return $pluginType;
     }
 
